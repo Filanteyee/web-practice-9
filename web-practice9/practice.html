@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tasks</title>
+    <style>
+        #progressContainer {
+            width: 100%;
+            background-color: #ddd;
+            margin-top: 20px;
+        }
+
+        #progressBar {
+            width: 0;
+            height: 20px;
+            background-color: #4caf50;
+        }
+
+        #dblClickElement {
+            width: 200px;
+            height: 100px;
+            background-color: #f0f0f0;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Event Listeners Example</h1>
+
+    <label for="myInput">Type here and press Enter:</label>
+    <input type="text" id="myInput" placeholder="Press Enter to log" />
+
+    <div id="dblClickElement">Double-click me!</div>
+
+    <div id="progressContainer">
+        <div id="progressBar"></div>
+    </div>
+    <button onclick="updateProgress(10)">Increase Progress</button>
+
+    <script>
+        document.getElementById("myInput").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                console.log("Enter key pressed");
+                alert("Enter key was pressed!");
+            }
+        });
+
+        document.getElementById("dblClickElement").addEventListener("dblclick", function() {
+            console.log("Element double-clicked");
+            alert("Double-click detected!");
+            this.style.backgroundColor = "yellow";
+        });
+
+        let progress = 0;
+
+        function updateProgress(amount) {
+            progress += amount;
+            if (progress > 100) progress = 100;
+
+            const progressBar = document.getElementById("progressBar");
+            progressBar.style.width = progress + "%";
+        }
+    </script>
+</body>
+</html>
